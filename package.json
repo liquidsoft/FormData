@@ -1,8 +1,8 @@
 {
   "name": "formdata-polyfill-on-demand",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "HTML5 `FormData` polyfill for Browsers.",
-  "main": "FormData.js",
+  "main": "build/FormData.js",
   "scripts": {
   },
   "repository": {
@@ -16,5 +16,13 @@
     "polyfill"
   ],
   "author": "Robert Ontiu",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^8.0.0",
+    "eslint": "^4.6.1",
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0"
+  }
 }
