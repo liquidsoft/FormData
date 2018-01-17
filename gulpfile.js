@@ -13,8 +13,6 @@ gulp.task("default", ["build"], () => {
 
 gulp.task("build", () => {
 	return gulp.src("./FormData.js")
-		.pipe(babel({
-			presets: ["es2015"]
-		}))
+		.pipe(babel())
 		.pipe(gulp.dest("./build"));
 });
