@@ -2,15 +2,21 @@
 
 require("regenerator-runtime/runtime");
 
-require("core-js/modules/web.dom.iterable");
-
 require("core-js/modules/es6.function.name");
 
 require("core-js/modules/es6.array.from");
 
+require("core-js/modules/es6.string.iterator");
+
 require("core-js/modules/es6.weak-map");
 
+require("core-js/modules/es7.symbol.async-iterator");
+
 require("core-js/modules/es6.symbol");
+
+require("core-js/modules/web.dom.iterable");
+
+require("core-js/modules/es6.array.iterator");
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -18,9 +24,13 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function _sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-function _slicedToArray(arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return _sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 // ==ClosureCompiler==
 // @output_file_name formdata.min.js
@@ -148,18 +158,18 @@ module.exports = function () {
 
         try {
           for (var _iterator = arrayFrom(form.elements)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var _elm = _step.value;
-            if (!_elm.name || _elm.disabled) continue;
+            var elm = _step.value;
+            if (!elm.name || elm.disabled) continue;
 
-            if (_elm.type === 'file') {
+            if (elm.type === 'file') {
               var _iteratorNormalCompletion2 = true;
               var _didIteratorError2 = false;
               var _iteratorError2 = undefined;
 
               try {
-                for (var _iterator2 = _elm.files[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                  var _file = _step2.value;
-                  this.append(_elm.name, _file);
+                for (var _iterator2 = elm.files[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                  var file = _step2.value;
+                  this.append(elm.name, file);
                 }
               } catch (err) {
                 _didIteratorError2 = true;
@@ -175,15 +185,15 @@ module.exports = function () {
                   }
                 }
               }
-            } else if (_elm.type === 'select-multiple' || _elm.type === 'select-one') {
+            } else if (elm.type === 'select-multiple' || elm.type === 'select-one') {
               var _iteratorNormalCompletion3 = true;
               var _didIteratorError3 = false;
               var _iteratorError3 = undefined;
 
               try {
-                for (var _iterator3 = arrayFrom(_elm.options)[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                  var _opt = _step3.value;
-                  _opt.selected && this.append(_elm.name, _opt.value);
+                for (var _iterator3 = arrayFrom(elm.options)[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                  var opt = _step3.value;
+                  opt.selected && this.append(elm.name, opt.value);
                 }
               } catch (err) {
                 _didIteratorError3 = true;
@@ -199,9 +209,9 @@ module.exports = function () {
                   }
                 }
               }
-            } else if (_elm.type === 'checkbox' || _elm.type === 'radio') {
-              if (_elm.checked) this.append(_elm.name, _elm.value);
-            } else this.append(_elm.name, _elm.value);
+            } else if (elm.type === 'checkbox' || elm.type === 'radio') {
+              if (elm.checked) this.append(elm.name, elm.value);
+            } else this.append(elm.name, elm.value);
           }
         } catch (err) {
           _didIteratorError = true;
@@ -258,7 +268,7 @@ module.exports = function () {
         value:
         /*#__PURE__*/
         regeneratorRuntime.mark(function entries() {
-          var map, name, _iteratorNormalCompletion4, _didIteratorError4, _iteratorError4, _iterator4, _step4, _value;
+          var map, name, _iteratorNormalCompletion4, _didIteratorError4, _iteratorError4, _iterator4, _step4, value;
 
           return regeneratorRuntime.wrap(function entries$(_context) {
             while (1) {
@@ -286,9 +296,9 @@ module.exports = function () {
                     break;
                   }
 
-                  _value = _step4.value;
+                  value = _step4.value;
                   _context.next = 13;
-                  return [name, normalizeValue(_value)];
+                  return [name, normalizeValue(value)];
 
                 case 13:
                   _iteratorNormalCompletion4 = true;
@@ -357,13 +367,11 @@ module.exports = function () {
 
           try {
             for (var _iterator5 = this[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-              var _ref5 = _step5.value;
+              var _step5$value = _slicedToArray(_step5.value, 2),
+                  name = _step5$value[0],
+                  value = _step5$value[1];
 
-              var _ref4 = _slicedToArray(_ref5, 2);
-
-              var _name = _ref4[0];
-              var _value2 = _ref4[1];
-              callback.call(thisArg, _value2, _name, this);
+              callback.call(thisArg, value, name, this);
             }
           } catch (err) {
             _didIteratorError5 = true;
@@ -429,7 +437,7 @@ module.exports = function () {
         value:
         /*#__PURE__*/
         regeneratorRuntime.mark(function keys() {
-          var _iteratorNormalCompletion6, _didIteratorError6, _iteratorError6, _iterator6, _step6, _ref8, _ref7, _name2;
+          var _iteratorNormalCompletion6, _didIteratorError6, _iteratorError6, _iterator6, _step6, _step6$value, name;
 
           return regeneratorRuntime.wrap(function keys$(_context2) {
             while (1) {
@@ -443,61 +451,59 @@ module.exports = function () {
 
                 case 5:
                   if (_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done) {
-                    _context2.next = 14;
+                    _context2.next = 12;
                     break;
                   }
 
-                  _ref8 = _step6.value;
-                  _ref7 = _slicedToArray(_ref8, 1);
-                  _name2 = _ref7[0];
-                  _context2.next = 11;
-                  return _name2;
+                  _step6$value = _slicedToArray(_step6.value, 1), name = _step6$value[0];
+                  _context2.next = 9;
+                  return name;
 
-                case 11:
+                case 9:
                   _iteratorNormalCompletion6 = true;
                   _context2.next = 5;
                   break;
 
-                case 14:
-                  _context2.next = 20;
+                case 12:
+                  _context2.next = 18;
                   break;
 
-                case 16:
-                  _context2.prev = 16;
+                case 14:
+                  _context2.prev = 14;
                   _context2.t0 = _context2["catch"](3);
                   _didIteratorError6 = true;
                   _iteratorError6 = _context2.t0;
 
-                case 20:
-                  _context2.prev = 20;
-                  _context2.prev = 21;
+                case 18:
+                  _context2.prev = 18;
+                  _context2.prev = 19;
 
                   if (!_iteratorNormalCompletion6 && _iterator6.return != null) {
                     _iterator6.return();
                   }
 
-                case 23:
-                  _context2.prev = 23;
+                case 21:
+                  _context2.prev = 21;
 
                   if (!_didIteratorError6) {
-                    _context2.next = 26;
+                    _context2.next = 24;
                     break;
                   }
 
                   throw _iteratorError6;
 
+                case 24:
+                  return _context2.finish(21);
+
+                case 25:
+                  return _context2.finish(18);
+
                 case 26:
-                  return _context2.finish(23);
-
-                case 27:
-                  return _context2.finish(20);
-
-                case 28:
                 case "end":
                   return _context2.stop();
               }
             }
-          }, keys, this, [[3, 16, 20, 28], [21,, 23, 27]]);
+          }, keys, this, [[3, 14, 18, 26], [19,, 21, 25]]);
         })
         /**
          * Overwrite all values given name
@@ -524,7 +530,7 @@ module.exports = function () {
         value:
         /*#__PURE__*/
         regeneratorRuntime.mark(function values() {
-          var _iteratorNormalCompletion7, _didIteratorError7, _iteratorError7, _iterator7, _step7, _ref11, _ref10, _name3, _value3;
+          var _iteratorNormalCompletion7, _didIteratorError7, _iteratorError7, _iterator7, _step7, _step7$value, name, value;
 
           return regeneratorRuntime.wrap(function values$(_context3) {
             while (1) {
@@ -538,62 +544,59 @@ module.exports = function () {
 
                 case 5:
                   if (_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done) {
-                    _context3.next = 15;
+                    _context3.next = 12;
                     break;
                   }
 
-                  _ref11 = _step7.value;
-                  _ref10 = _slicedToArray(_ref11, 2);
-                  _name3 = _ref10[0];
-                  _value3 = _ref10[1];
-                  _context3.next = 12;
-                  return _value3;
+                  _step7$value = _slicedToArray(_step7.value, 2), name = _step7$value[0], value = _step7$value[1];
+                  _context3.next = 9;
+                  return value;
 
-                case 12:
+                case 9:
                   _iteratorNormalCompletion7 = true;
                   _context3.next = 5;
                   break;
 
-                case 15:
-                  _context3.next = 21;
+                case 12:
+                  _context3.next = 18;
                   break;
 
-                case 17:
-                  _context3.prev = 17;
+                case 14:
+                  _context3.prev = 14;
                   _context3.t0 = _context3["catch"](3);
                   _didIteratorError7 = true;
                   _iteratorError7 = _context3.t0;
 
-                case 21:
-                  _context3.prev = 21;
-                  _context3.prev = 22;
+                case 18:
+                  _context3.prev = 18;
+                  _context3.prev = 19;
 
                   if (!_iteratorNormalCompletion7 && _iterator7.return != null) {
                     _iterator7.return();
                   }
 
-                case 24:
-                  _context3.prev = 24;
+                case 21:
+                  _context3.prev = 21;
 
                   if (!_didIteratorError7) {
-                    _context3.next = 27;
+                    _context3.next = 24;
                     break;
                   }
 
                   throw _iteratorError7;
 
-                case 27:
-                  return _context3.finish(24);
-
-                case 28:
+                case 24:
                   return _context3.finish(21);
 
-                case 29:
+                case 25:
+                  return _context3.finish(18);
+
+                case 26:
                 case "end":
                   return _context3.stop();
               }
             }
-          }, values, this, [[3, 17, 21, 29], [22,, 24, 28]]);
+          }, values, this, [[3, 14, 18, 26], [19,, 21, 25]]);
         })
         /**
          * Return a native (perhaps degraded) FormData with only a `append` method
@@ -612,13 +615,11 @@ module.exports = function () {
 
           try {
             for (var _iterator8 = this[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
-              var _ref14 = _step8.value;
+              var _step8$value = _slicedToArray(_step8.value, 2),
+                  name = _step8$value[0],
+                  value = _step8$value[1];
 
-              var _ref13 = _slicedToArray(_ref14, 2);
-
-              var _name4 = _ref13[0];
-              var _value4 = _ref13[1];
-              fd.append(_name4, _value4);
+              fd.append(name, value);
             }
           } catch (err) {
             _didIteratorError8 = true;
@@ -654,18 +655,16 @@ module.exports = function () {
 
           try {
             for (var _iterator9 = this[Symbol.iterator](), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
-              var _ref17 = _step9.value;
+              var _step9$value = _slicedToArray(_step9.value, 2),
+                  name = _step9$value[0],
+                  value = _step9$value[1];
 
-              var _ref16 = _slicedToArray(_ref17, 2);
-
-              var _name5 = _ref16[0];
-              var _value5 = _ref16[1];
               chunks.push("--".concat(boundary, "\r\n"));
 
-              if (_value5 instanceof Blob) {
-                chunks.push("Content-Disposition: form-data; name=\"".concat(_name5, "\"; filename=\"").concat(_value5.name, "\"\r\n"), "Content-Type: ".concat(_value5.type || 'application/octet-stream', "\r\n\r\n"), _value5, '\r\n');
+              if (value instanceof Blob) {
+                chunks.push("Content-Disposition: form-data; name=\"".concat(name, "\"; filename=\"").concat(value.name, "\"\r\n"), "Content-Type: ".concat(value.type || 'application/octet-stream', "\r\n\r\n"), value, '\r\n');
               } else {
-                chunks.push("Content-Disposition: form-data; name=\"".concat(_name5, "\"\r\n\r\n").concat(_value5, "\r\n"));
+                chunks.push("Content-Disposition: form-data; name=\"".concat(name, "\"\r\n\r\n").concat(value, "\r\n"));
               }
             }
           } catch (err) {

@@ -1,14 +1,14 @@
 {
   "name": "formdata-polyfill-on-demand",
-  "version": "1.0.2",
+  "version": "1.0.20",
   "description": "HTML5 `FormData` polyfill for Browsers.",
   "main": "build/FormData.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack"
+    "build": "./node_modules/.bin/gulp"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/liquidsoft/FormData.git"
+    "url": "git+https://github.com/robertontiu/FormData"
   },
   "keywords": [
     "formdata",
